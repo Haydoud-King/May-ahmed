@@ -20,87 +20,77 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
             background-color: #f8fafc;
             color: var(--text-main);
-            padding-bottom: 30px;
+            direction: rtl;
         }
 
-        /* الهيدر وشريط التصفح */
+        /* Header */
         header {
-            background: #ffffff;
-            padding: 12px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            text-decoration: none;
         }
 
         .logo-img {
-            height: 40px;
-            border-radius: 8px;
-            object-fit: contain;
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            object-fit: cover;
         }
 
-        .header-actions {
-            display: flex;
-            gap: 12px;
-        }
-
-        .icon-btn {
-            background: var(--primary-bg);
+        .logo-text {
+            font-size: 24px;
+            font-weight: 800;
             color: var(--primary);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            cursor: pointer;
         }
 
-        /* واجهة البحث */
-        .search-box {
-            padding: 15px 20px;
-            background: #fff;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .search-input-wrap {
+        .search-bar {
+            flex: 1;
+            max-width: 450px;
+            margin: 0 20px;
             position: relative;
-            max-width: 600px;
-            margin: 0 auto;
         }
 
-        .search-input-wrap input {
+        .search-bar input {
             width: 100%;
-            padding: 12px 45px 12px 15px;
-            border: 2px solid #e2e8f0;
-            border-radius: 25px;
+            padding: 10px 40px 10px 15px;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            background-color: #f1f5f9;
             outline: none;
-            font-size: 15px;
-            transition: 0.3s;
+            transition: all 0.3s ease;
         }
 
-        .search-input-wrap input:focus {
+        .search-bar input:focus {
+            background-color: #fff;
             border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
         }
 
-        .search-input-wrap i {
+        .search-bar i {
             position: absolute;
             right: 15px;
             top: 50%;
@@ -108,229 +98,163 @@
             color: var(--text-muted);
         }
 
-        /* الأقسام السريعة */
-        .categories-scroll {
-            display: flex;
-            gap: 10px;
-            padding: 15px 20px;
-            overflow-x: auto;
-            white-space: nowrap;
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #16a34a, #15803d);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 30px;
         }
 
-        .cat-chip {
-            background: #fff;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-main);
-            border: 1px solid #e2e8f0;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            text-decoration: none;
+        .hero h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
         }
 
-        .cat-chip.active {
-            background: var(--primary);
-            color: #fff;
-            border-color: var(--primary);
+        .hero p {
+            font-size: 16px;
+            opacity: 0.9;
         }
 
-        /* شبكة عرض الألعاب */
+        /* Main Container */
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 10px 15px;
+            padding: 0 20px 40px;
         }
 
         .section-title {
-            font-size: 18px;
-            margin: 15px 0 10px 0;
-            color: var(--text-main);
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            border-right: 4px solid var(--primary);
+            padding-right: 10px;
         }
 
+        /* Grid */
         .grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
         }
 
-        @media (max-width: 480px) {
-            .grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-            }
-        }
-
-        /* بطاقة اللعبة */
         .card {
-            background: var(--card-bg);
+            background-color: var(--card-bg);
             border-radius: 16px;
-            padding: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            border: 1px solid #f1f5f9;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            transition: transform 0.2s, box-shadow 0.2s;
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
-            position: relative;
             text-decoration: none;
             color: inherit;
         }
 
-        .badge-mod {
-            position: absolute;
-            top: 18px;
-            right: 18px;
-            background: #ef4444;
-            color: #fff;
-            font-size: 10px;
-            font-weight: bold;
-            padding: 2px 8px;
-            border-radius: 6px;
-            z-index: 2;
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
 
         .card-img {
-            width: 90px;
-            height: 90px;
-            border-radius: 20px;
+            width: 80px;
+            height: 80px;
+            border-radius: 18px;
             object-fit: cover;
-            margin-bottom: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            margin-bottom: 12px;
         }
 
         .card-title {
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 700;
-            margin-bottom: 4px;
-            line-height: 1.3;
+            margin-bottom: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
         }
 
-        .card-sub {
-            font-size: 11px;
-            color: #0284c7;
+        .card-badge {
+            background-color: var(--primary-bg);
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 12px;
             margin-bottom: 10px;
         }
 
-        .card-meta {
-            display: flex;
-            justify-content: space-between;
+        .btn-download {
             width: 100%;
-            padding-top: 8px;
-            border-top: 1px solid #f1f5f9;
-            font-size: 11px;
-            color: var(--text-muted);
+            padding: 8px 0;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
         }
 
-        /* الفوتر */
-        footer {
-            margin-top: 40px;
-            text-align: center;
-            padding: 20px;
-            background: #fff;
-            border-top: 1px solid #e2e8f0;
-            font-size: 13px;
-            color: var(--text-muted);
+        .btn-download:hover {
+            background-color: #16a34a;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
     <header>
-        <div class="logo-container">
-            <!-- الشعار المرفوع -->
-            <img src="logo.png" alt="حيدود" class="logo-img" onerror="this.style.display='none'">
-            <h2 style="font-size: 20px; font-weight: 800; color: #000;">حيدود</h2>
-        </div>
-        <div class="header-actions">
-            <button class="icon-btn"><i class="fa-solid fa-bars"></i></button>
+        <div class="navbar">
+            <a href="#" class="logo-container">
+                <img src="1787488676620.png" alt="حيدود" class="logo-img">
+                <span class="logo-text">حيدود</span>
+            </a>
+            <div class="search-bar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="ابحث عن تطبيق أو لعبة مهكرة...">
+            </div>
         </div>
     </header>
 
-    <!-- Search Box -->
-    <div class="search-box">
-        <div class="search-input-wrap">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="أريد أن أجد لعبة أو تطبيق...">
-        </div>
-    </div>
+    <section class="hero">
+        <h1>متجر حيدود للتطبيقات والألعاب المهكرة</h1>
+        <p>تحميل أحدث الألعاب والتطبيقات المعدلة مجاناً وبروابط مباشرة</p>
+    </section>
 
-    <!-- Quick Navigation -->
-    <div class="categories-scroll">
-        <a href="#" class="cat-chip active"><i class="fa-solid fa-house"></i> الرئيسية</a>
-        <a href="#" class="cat-chip"><i class="fa-solid fa-gamepad"></i> ألعاب مهكرة</a>
-        <a href="#" class="cat-chip"><i class="fa-solid fa-mobile-screen"></i> تطبيقات</a>
-        <a href="#" class="cat-chip"><i class="fa-solid fa-fire"></i> الشائعة</a>
-    </div>
-
-    <!-- Main Content Grid -->
     <div class="container">
-        <h3 class="section-title"><i class="fa-solid fa-bolt" style="color: var(--accent-yellow);"></i> أحدث الإضافات</h3>
-        
+        <h2 class="section-title"><i class="fa-solid fa-fire text-danger"></i> أحدث الألعاب المهكرة</h2>
         <div class="grid">
-            
-            <!-- Game 1 -->
             <a href="#" class="card">
-                <span class="badge-mod">مهكرة</span>
-                <img src="https://via.placeholder.com/100/1e293b/ffffff?text=Traffic+Rider" class="card-img" alt="Traffic Rider">
-                <div class="card-title">Traffic Rider</div>
-                <div class="card-sub">تحميل سباق مهكرة</div>
-                <div class="card-meta">
-                    <span><i class="fa-solid fa-download"></i> 167.5 MB</span>
-                    <span><i class="fa-solid fa-code-branch"></i> v2.11</span>
-                </div>
+                <img src="https://via.placeholder.com/80" alt="Game" class="card-img">
+                <div class="card-title">Free Fire Mod</div>
+                <div class="card-badge">ميجامود</div>
+                <button class="btn-download">تحميل</button>
             </a>
-
-            <!-- Game 2 -->
             <a href="#" class="card">
-                <span class="badge-mod">مهكرة</span>
-                <img src="https://via.placeholder.com/100/0284c7/ffffff?text=Truckers+3" class="card-img" alt="Truckers Of Europe 3">
-                <div class="card-title">Truckers Of Europe 3</div>
-                <div class="card-sub">محاكاة قيادة مهكرة</div>
-                <div class="card-meta">
-                    <span><i class="fa-solid fa-download"></i> 619.9 MB</span>
-                    <span><i class="fa-solid fa-code-branch"></i> v0.7.64</span>
-                </div>
+                <img src="https://via.placeholder.com/80" alt="Game" class="card-img">
+                <div class="card-title">GTA San Andreas</div>
+                <div class="card-badge">أموال لا نهائية</div>
+                <button class="btn-download">تحميل</button>
             </a>
-
-            <!-- Game 3 -->
             <a href="#" class="card">
-                <span class="badge-mod">مهكرة</span>
-                <img src="https://via.placeholder.com/100/ef4444/ffffff?text=Brawl+Stars" class="card-img" alt="Brawl Stars">
-                <div class="card-title">Brawl Stars</div>
-                <div class="card-sub">أكشن أكشن مهكرة</div>
-                <div class="card-meta">
-                    <span><i class="fa-solid fa-download"></i> 350.0 MB</span>
-                    <span><i class="fa-solid fa-code-branch"></i> أحدث إصدار</span>
-                </div>
+                <img src="https://via.placeholder.com/80" alt="Game" class="card-img">
+                <div class="card-title">Subway Surfers</div>
+                <div class="card-badge">مفاتيح غير محدودة</div>
+                <button class="btn-download">تحميل</button>
             </a>
-
-            <!-- Game 4 -->
             <a href="#" class="card">
-                <span class="badge-mod">مهكرة</span>
-                <img src="https://via.placeholder.com/100/22c55e/ffffff?text=Dr+Driving" class="card-img" alt="Dr Driving">
-                <div class="card-title">Dr Driving</div>
-                <div class="card-sub">سباق سيارات مهكرة</div>
-                <div class="card-meta">
-                    <span><i class="fa-solid fa-download"></i> 14.2 MB</span>
-                    <span><i class="fa-solid fa-code-branch"></i> v1.69</span>
-                </div>
+                <img src="https://via.placeholder.com/80" alt="Game" class="card-img">
+                <div class="card-title">PUBG Mobile</div>
+                <div class="card-badge">ثبات السلاح</div>
+                <button class="btn-download">تحميل</button>
             </a>
-
         </div>
     </div>
-
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 <strong>حيدود</strong>. جميع الحقوق محفوظة.</p>
-    </footer>
 
 </body>
-    </html>
-    
+</html>
